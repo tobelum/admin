@@ -24,6 +24,10 @@
 		delMsg();
 		break;
 
+		case 6:
+		logAdmin();
+		break;
+
 		default:
 		echo "wrong cmd";
 		break;
@@ -157,6 +161,29 @@ function delMsg() {
 	 echo '{"result":1, "message": "Message sucessfully deleted"}';	
 	}
 	
+}
+
+function logAdmin(){
+	if (($_REQUEST['username']=="") || ($_REQUEST['password']=="")) {
+		echo '{"result":0, "message": "All user information required was not given"}';
+		return;
+	}
+	
+	include_once("admin.php");
+	$obj = new admin();
+	$username = $_REQUEST['username'];
+	$password = $_REQUEST['password'];
+	
+	$result = $obj->getAdmin($username,$password);
+
+	if ($result==false) {
+		echo '{"result":0 ,"message": "Could not log User"}';
+	}
+	
+	else {
+
+	 echo '{"result":1, "message": "User sucessfully logged in"}';	
+	}
 }
 
 

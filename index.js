@@ -5,6 +5,20 @@
 var infos = Array();
 var dir = Array();
 
+      var customLabel = {
+        restaurant: {
+          label: 'Restaurant'
+        },
+        bar: {
+          label: 'Bar'
+        },
+        atm: {
+          label: 'ATM'
+        },
+        lodging: 'Hotel'
+      }
+      };
+
 function myLocation() {
 navigator.geolocation.getCurrentPosition(onSuccess, onError);
 }
